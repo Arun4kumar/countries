@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Header from './Components/Header'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './Components/Home'
+import Single from './Components/Single'
+import { useContext, useEffect, useState } from 'react'
+import context from './store'
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const ctx = useContext(context)
+    
+    return (
+        <div className={`${ctx.dark && 'dark' }`}>
+            <div className="bg-vlgbg dark:bg-vdbbg box-border min-h-screen h-full">
+                <BrowserRouter>
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/:name" element={<Single />} />
+                    </Routes>
+                </BrowserRouter>
+            </div>
+        </div>
+    )
 }
 
-export default App;
+export default App
