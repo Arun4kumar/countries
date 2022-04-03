@@ -29,7 +29,7 @@ const Single = () => {
         }
         test()
     }, [params])
-    console.log(data)
+
     return (
         <div className="box-border px-4 md:px-24 dark:text-whitet">
             <div className="my-8 md:my-12">
@@ -100,11 +100,14 @@ const Single = () => {
                         </div>
                         <div className="flex flex-wrap items-center gap-4 ">
                             <strong className="w-full">Border Countries</strong>
-                            {Object.values(data.borders).map((item) => (
-                                <Button onClick={() => navigate(`/${item}`)}>
-                                    {item}
-                                </Button>
-                            ))}
+                            {data.borders &&
+                                Object.values(data.borders).map((item) => (
+                                    <Button
+                                        onClick={() => navigate(`/${item}`)}
+                                    >
+                                        {item}
+                                    </Button>
+                                ))}
                         </div>
                     </div>
                 )}
